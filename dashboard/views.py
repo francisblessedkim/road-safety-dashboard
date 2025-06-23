@@ -6,6 +6,7 @@ from .serializers import TrafficAccidentCreateSerializer
 from django.db.models import Q
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from datetime import datetime
 
 class TrafficAccidentListView(generics.ListAPIView):
     queryset = TrafficAccident.objects.all()
@@ -32,3 +33,33 @@ class FilterByCauseView(generics.ListAPIView):
 class TrafficAccidentCreateView(generics.CreateAPIView):
     queryset = TrafficAccident.objects.all()
     serializer_class = TrafficAccidentCreateSerializer
+
+
+class FilterMultipleView(generics.ListAPIView):
+    serializer_class = TrafficAccidentSerializer
+
+    def get_queryset(self):
+        queryset = TrafficAccident.objects.all()
+        city = self.request.query_params.get('city')
+        cause = self.request.query_params.get('cause')
+
+        if city:
+            queryset = queryset.filter(location__city__icontains=city)
+        if cause:
+            queryset = queryset.filter(cause__description__icontains=cause)
+
+        return queryset
+
+
+class WeekendAccidentView(generics.ListAPIView):
+    serializer_class = TrafficAccidentSerializer
+
+    def get_queryset(self):
+        queryset = TrafficAccident.objects.all()
+        weekend_accidents = []
+
+        for accident in queryset:
+            if accident.date.weekday() in [5, 6]:  # Saturday = 5, Sunday = 6
+                weekend_accidents.append(accident.id)
+
+        return queryset.filter(id__in=weekend_accidents)

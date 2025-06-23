@@ -4,6 +4,8 @@ from .views import (
     FilterByCityView,
     FilterByCauseView,
     TrafficAccidentCreateView,
+    FilterMultipleView,
+    WeekendAccidentView,
 )
 
 urlpatterns = [
@@ -11,5 +13,6 @@ urlpatterns = [
     path('accidents/by-city/', FilterByCityView.as_view(), name='filter-by-city'),
     path('accidents/by-cause/',FilterByCauseView.as_view(), name='filter-by-cause'),
     path('accidents/create/', TrafficAccidentCreateView.as_view(), name='accident-create'),
-
+    path('accidents/filter/', FilterMultipleView.as_view(), name='accident-multi-filter'),
+    path('accidents/weekend/', WeekendAccidentView.as_view(), name='weekend-accidents'),
 ]
