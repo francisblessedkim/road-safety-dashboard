@@ -8,6 +8,9 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from datetime import datetime
 
+def api_home(request):
+    return render(request, 'api_home.html')
+
 class TrafficAccidentListView(generics.ListAPIView):
     queryset = TrafficAccident.objects.all()
     serializer_class = TrafficAccidentSerializer
