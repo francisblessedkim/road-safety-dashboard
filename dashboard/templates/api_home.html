@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Road Safety API</title>
     <style>
+        /* Base body styling: font, background gradient, text color, padding, and center alignment */
         body {
             font-family: 'Segoe UI', sans-serif;
             background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
@@ -11,15 +12,18 @@
             padding: 2rem;
             text-align: center;
         }
+        /* Main heading styling */
         h1 {
             margin-bottom: 0.5rem;
             font-size: 2.5rem;
         }
+        /* Paragraph styling */
         p {
             font-size: 1.1rem;
             color: #ccc;
             margin-bottom: 2rem;
         }
+        /* Button-like link styling */
         a.button {
             display: block;
             margin: 0.5rem auto;
@@ -33,6 +37,7 @@
             font-size: 1rem;
             transition: all 0.3s ease;
         }
+        /* Button hover effect */
         a.button:hover {
             background: linear-gradient(45deg, #00bfff, #1e90ff);
             transform: scale(1.05);
@@ -40,9 +45,12 @@
     </style>
 </head>
 <body>
+    <!-- Main title for the API home page -->
     <h1>🚦 Road Safety API</h1>
+    <!-- Brief description for users -->
     <p>Explore all available endpoints below:</p>
 
+    <!-- List of API endpoint links with descriptions -->
     <a class="button" href="/api/accidents/">GET - All Accidents</a>
     <a class="button" href="/api/accidents/by-city/?city=Mumbai">GET - By City</a>
     <a class="button" href="/api/accidents/by-cause/?cause=Drunk Driving">GET - By Cause</a>
@@ -50,6 +58,7 @@
     <a class="button" href="/api/accidents/weekend/">GET - Weekend Accidents</a>
     <a class="button" href="/api/accidents/create/">POST - Create New Accident</a>
 
+    <!-- Footer with tech stack and copyright -->
     <p style="margin-top: 3rem; font-size: 0.9rem;">Built with Django + DRF | <strong>SQLite3</strong> | © 2025 Francis</p>
 </body>
 </html>
