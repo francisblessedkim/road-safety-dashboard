@@ -27,7 +27,8 @@ SECRET_KEY = "django-insecure-p#%h2kj547@_=@p1)tofq8gh_cu_a0x8xdjsx13p(x*tnuohl1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Hosts/domain names that are valid for this site;
+ALLOWED_HOSTS = ['road-safety-dashboard.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
