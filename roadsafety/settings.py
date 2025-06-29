@@ -131,7 +131,16 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 50,
 }
 
-import os
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # required for collectstatic
+
+# Required for Render or any production server to serve static files
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# Add WhiteNoise middleware for static file handling
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
+# Use compressed static files storage
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
